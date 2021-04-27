@@ -1,9 +1,14 @@
 <template>
-  <h1>Contador</h1>
+  <h1>Contador: {{ contador }}</h1>
 </template>
 
 <script>
-export default {
 
+import { useCounter } from '../hooks/useCounter'
+
+export default {
+  setup() {
+    return { ...useCounter() }
+  }
 }
 </script>

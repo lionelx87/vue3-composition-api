@@ -18,23 +18,21 @@ import { ref } from '@vue/reactivity';
 import { computed } from '@vue/runtime-core';
 import Title from '../components/Title'
 import Btn from '../components/Btn'
+import { useCounter } from '../hooks/useCounter'
 
 export default {
   components: { Title, Btn },
   setup() {
-    const contador = ref(0);
-    const texto = ref('');
 
-    const aumentar = () => contador.value++;
-
-    const disminuir = () => contador.value--;
+    const { contador, aumentar, disminuir } = useCounter();
+    
+    const texto = ref('');    
 
     const color = computed( () => {
       return contador.value >= 0 ? 'blue' : 'red';
     });
 
-    return { contador, texto, aumentar, disminuir, color }
-    
+    return { contador, aumentar, disminuir, texto, color }    
   }    
 }
 </script>
